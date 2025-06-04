@@ -21,6 +21,7 @@ class Environment:
         self.prob_dict = prob_dict
         self.actions = self.get_actions()
         self.applied_rules = []
+        self.step_counter = 0
         
     # Each index of rhs are a list of applicable rules to currentstate and currentstate + 1
     def get_actions(self):
@@ -248,14 +249,18 @@ class Environment:
         reward_after = self.evaluate_tree()
         # reward_after = self.evaluate_tree()
         last_rule = self.applied_rules[-1]
+        self.step_counter += 1
         # reward = prob_dict.get(last_rule.make_hashable(), 1e-10)  # Use same small value as in evaluate_tree
         # delta_reward = reward_after - reward_before
         next_chord_tensor, next_actions_tensor = self.get_state_tensor()
+        depths = [node.get_total_depth() for node in self.current_nodes]
+        min_depth = min(depths) + 1 if depths else 1
         # reward = self.evaluate_tree() if self.is_terminal() else np.log(prob_dict.get(last_rule.make_hashable(), 1e-10))
-        reward = self.evaluate_tree() if self.is_terminal() else np.log(self.prob_dict.get(last_rule.make_hashable(), 1e-10))
+        reward = self.evaluate_tree()*min_depth if self.is_terminal() else np.log(self.prob_dict.get(last_rule.make_hashable(), 1e-10))*min_depth
         # reward = reward_after - reward_before
         done = self.is_terminal()
         self.actions = self.get_actions()
+        self.step_counter += 1
         # if done:
         #     delta_reward = self.evaluate_tree()
         return {

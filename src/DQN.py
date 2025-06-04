@@ -79,7 +79,7 @@ from torch.optim.lr_scheduler import StepLR
 #         return self.q_net(x)   
 
 class DQN(nn.Module):
-    def __init__(self, input_dim, num_actions, hidden_dim=128, dropout_prob=0.05):
+    def __init__(self, input_dim, num_actions, hidden_dim=128, dropout_prob=0.01):
         super(DQN, self).__init__()
 
         self.q_net = nn.Sequential(
@@ -96,7 +96,7 @@ class DQN(nn.Module):
             nn.ReLU(),
             nn.Dropout(dropout_prob),
 
-            nn.Linear(hidden_dim//4, hidden_dim//4),
+            nn.Linear(hidden_dim//4, hidden_dim//8),
             nn.ReLU(),
             nn.Dropout(dropout_prob),
 
@@ -106,7 +106,7 @@ class DQN(nn.Module):
 
 
 
-            nn.Linear(hidden_dim//4, num_actions)  # One Q-value per action
+            nn.Linear(hidden_dim//8, num_actions)  # One Q-value per action
         )
 
 
@@ -214,7 +214,7 @@ def train_model(model, dataset, prob_dict,rules,num_episodes=1000, batch_size=32
         env.add_model(model)
         loss = None
         while not env.is_terminal():
-            transition = env.step(epsilon=0.1)
+            transition = env.step(epsilon=0.2)
             if transition and transition["next_actions"].numel() > 0:
                 buffer.add(transition)
 
