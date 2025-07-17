@@ -9,6 +9,7 @@ def get_possible_intervals(chord1,chord2):
 
     return intervals
 
+
 def get_qualities(chord1,chord2):
     return [chord1.quality, chord2.quality]
 
