@@ -1,5 +1,6 @@
 from Chord import Chord
 from Rule import Rule
+from TreeNode import TreeNode
 import numpy as np
 def get_possible_intervals(chord1,chord2):
 
@@ -8,6 +9,7 @@ def get_possible_intervals(chord1,chord2):
     intervals.append([str(chord1.distance_from(chord2)), str(chord2.distance_to(chord2))])
 
     return intervals
+
 
 def get_qualities(chord1,chord2):
     return [chord1.quality, chord2.quality]
@@ -63,3 +65,24 @@ def evaluate_tree_from_dict(tree, prob_dict,parent_label=None):
         else:
             log_probs += np.log(1e-10)
     return applied_rules, log_probs
+
+
+def build_tree_from_dict(data):
+    """
+    Recursively builds a TreeNode-based binary tree from a dictionary with 'label' and 'children'.
+    Assumes binary structure: at most two children per node.
+    """
+    node = TreeNode(Chord(data["label"]))
+    
+    children = data.get("children", [])
+    if len(children) > 0:
+        node.left = build_tree_from_dict(children[0])
+        node.left.parent = node
+    if len(children) > 1:
+        node.right = build_tree_from_dict(children[1])
+        node.right.parent = node
+    # If more than 2 children: silently ignore or raise error
+    if len(children) > 2:
+        raise ValueError(f"Too many children for binary tree node: {data['label']}")
+    
+    return node
