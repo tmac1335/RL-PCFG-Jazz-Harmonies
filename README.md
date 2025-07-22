@@ -13,7 +13,7 @@ The project investigates whether a reinforcement learning agent can learn to par
 - Supplementary visualizations for analysis and presentation of results.  
 - Includes sequential reward plots and tree score comparisons.
 
-## 🧠 Core Modules
+## Core Modules
 
 ### `environment.py`  
 - Defines the RL environment, including:
