@@ -34,7 +34,7 @@ The project investigates whether a reinforcement learning agent can learn to par
 - Used to compute rule probabilities and evaluate full parse trees externally.  
 - Estimates rule likelihoods from the annotated treebank.
 
-## 🤖 Deep Q-Learning Components
+## Deep Q-Learning Components
 
 ### `DQN.py`  
 - Contains the architecture of the Deep Q-Network used for policy learning.  
