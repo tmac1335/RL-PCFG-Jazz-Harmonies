@@ -1,6 +1,5 @@
 from Chord import Chord
 from Rule import Rule
-from TreeNode import TreeNode
 import numpy as np
 def get_possible_intervals(chord1,chord2):
 
