@@ -11,6 +11,7 @@ The project investigates whether a reinforcement learning agent can learn to par
 
 ### `data_cleaning.ipynb`  
 - Contains data cleaning pipeline
+- Train, test split pipeline
 - Sets the 'chords' column to the leaf nodes of the corresponding complete constituent tree
 
 ### `visualisation.ipynb`  
