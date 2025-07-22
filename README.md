@@ -53,7 +53,7 @@ The project investigates whether a reinforcement learning agent can learn to par
 ## Dataset & Rule Definitions
 
 - The full rule set, including interval and quality combinations (with probabilities), is provided as a spreadsheet in the repository.
-- Dataset used: **Jazz Harmony Treebank** (150 expert-annotated trees).
+- Dataset used: [Jazz Harmony Treebank](https://github.com/DCMLab/JazzHarmonyTreebank) (150 expert-annotated trees). 
 - Data split: 80% training / 20% test.
 
 
