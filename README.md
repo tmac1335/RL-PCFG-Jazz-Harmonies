@@ -6,8 +6,12 @@ The project investigates whether a reinforcement learning agent can learn to par
 ## Repository Overview
 
 ### `main.ipynb`  
-- Contains the full training pipeline and the inference logic for model retrieval.  
+- Contains the full training pipeline and the logic for model retrieval.  
 - Used to generate all the results reported in the thesis.
+
+### `data_cleaning.ipynb`  
+- Contains data cleaning pipeline
+- Sets the 'chords' column to the leaf nodes of the corresponding complete constituent tree
 
 ### `visualisation.ipynb`  
 - Supplementary visualizations for analysis and presentation of results.  
