@@ -3,7 +3,7 @@ This repository was developed as part of the Information Studies Master’s Thes
 
 The project investigates whether a reinforcement learning agent can learn to parse jazz chord sequences using a probabilistic grammar, and outperform a greedy baseline. It includes an environment for syntactic tree construction, a probabilistic grammar for external evaluation, and a deep Q-learning policy for rule selection.
 
-## 📁 Repository Overview
+## Repository Overview
 
 ### `main.ipynb`  
 - Contains the full training pipeline and the inference logic for model retrieval.  
